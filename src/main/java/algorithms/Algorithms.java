@@ -2,10 +2,7 @@ package algorithms;
 
 public class Algorithms {
     public static void main(String[] args) {
-
-        System.out.println(getRecursiveFactorial(5));
-        System.out.println(getNativeFactorial(5));
-
+        
     }
 
     private static long getRecursiveFactorial(int n) {
@@ -19,6 +16,21 @@ public class Algorithms {
             result = result * i;
         }
         return result;
+    }
+
+    private static long getRecursiveFibonacci(int n) {
+        if (n <= 1) return n;
+        else return getRecursiveFibonacci(n - 1) + getRecursiveFibonacci(n - 2);
+    }
+
+    private static long getNativeFibonacci(int n) {
+        long[] arr = new long[n + 1];
+        arr[0] = 0;
+        arr[1] = 1;
+        for (int i = 2; i <= n; i++) {
+            arr[i] = arr[i - 1] + arr[i - 2];
+        }
+        return arr[n];
     }
 
 }
