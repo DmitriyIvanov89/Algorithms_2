@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 public class Algorithms {
     public static void main(String[] args) {
-        
+
     }
 
     private static long getRecursiveFactorial(int n) {
@@ -76,8 +76,8 @@ public class Algorithms {
         }
     }
 
-    // O(n^2)
     //int[] array = new int[] {32,14,25,66,78,1,12,14,5,36,2,19,69,45,3,28,7};
+    // O(n^2)
     private static void bubbleSort(int[] array) {
         boolean isSorted = false;
         while (!isSorted) {
