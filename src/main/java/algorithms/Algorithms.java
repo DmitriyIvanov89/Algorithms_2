@@ -1,9 +1,10 @@
 package algorithms;
 
+import java.util.Arrays;
+
 public class Algorithms {
     public static void main(String[] args) {
-
-
+        
     }
 
     private static long getRecursiveFactorial(int n) {
@@ -72,6 +73,23 @@ public class Algorithms {
             return binarySearchRecursive(array, middle + 1, right, key);
         } else {
             return middle;
+        }
+    }
+
+    // O(n^2)
+    //int[] array = new int[] {32,14,25,66,78,1,12,14,5,36,2,19,69,45,3,28,7};
+    private static void bubbleSort(int[] array) {
+        boolean isSorted = false;
+        while (!isSorted) {
+            isSorted = true;
+            for (int i = 1; i < array.length; i++) {
+                if (array[i] < array[i - 1]) {
+                    int tmp = array[i];
+                    array[i] = array[i - 1];
+                    array[i - 1] = tmp;
+                    isSorted = false;
+                }
+            }
         }
     }
 
