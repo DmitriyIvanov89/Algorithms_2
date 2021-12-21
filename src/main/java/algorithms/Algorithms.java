@@ -93,4 +93,39 @@ public class Algorithms {
         }
     }
 
+    // O(Log2n)
+    private static void quickSort(int[] array, int from, int to) {
+        if (from < to) {
+            int divideIndex = partition(array, from, to);
+            quickSort(array, from, divideIndex - 1);
+            quickSort(array, divideIndex + 1, to);
+        }
+    }
+
+    private static int partition(int[] array, int from, int to) {
+        int leftIndex = from;
+        int rightIndex = array.length - 1;
+        int pivot = array[from];
+        while (leftIndex < rightIndex) {
+            while (array[leftIndex] < pivot) {
+                leftIndex++;
+            }
+            while (array[rightIndex] > pivot) {
+                rightIndex--;
+            }
+            if (leftIndex <= rightIndex) {
+                swap(array, rightIndex, leftIndex);
+                leftIndex++;
+                rightIndex--;
+            }
+        }
+        return leftIndex;
+    }
+
+    private static void swap(int[] array, int index1, int index2) {
+        int tmp = array[index1];
+        array[index1] = array[index2];
+        array[index2] = tmp;
+    }
+
 }
