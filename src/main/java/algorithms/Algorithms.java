@@ -5,6 +5,10 @@ import java.util.Arrays;
 public class Algorithms {
     public static void main(String[] args) {
 
+        int[] array = {32, 14, 25, 66, 78, 1, 12, 14, 5, 36, 2, 19, 69, 45, 3, 28, 7};
+        mergeSort(array, 0, array.length - 1);
+        System.out.println(Arrays.toString(array));
+
     }
 
     private static long getRecursiveFactorial(int n) {
@@ -126,6 +130,50 @@ public class Algorithms {
         int tmp = array[index1];
         array[index1] = array[index2];
         array[index2] = tmp;
+    }
+
+    //O(nLogN)
+    //int[] array = new int[] {32,14,25,66,78,1,12,14,5,36,2,19,69,45,3,28,7};
+    private static void mergeSort(int[] array, int from, int to) {
+        if (to <= from) return;
+        int middle = (from + to) / 2;
+        mergeSort(array, from, middle);
+        mergeSort(array, middle + 1, to);
+        merge(array, from, middle, to);
+    }
+
+    private static void merge(int[] array, int left, int middle, int right) {
+        int[] leftArray = new int[middle - left + 1];
+        int[] rightArray = new int[right - middle];
+
+        for (int i = 0; i < leftArray.length; i++) {
+            leftArray[i] = array[left + i];
+        }
+
+        for (int i = 0; i < rightArray.length; i++) {
+            rightArray[i] = array[i + middle + 1];
+        }
+
+        int leftIndex = 0;
+        int rightIndex = 0;
+
+        for (int i = left; i < right + 1; i++) {
+            if (leftIndex < leftArray.length && rightIndex < rightArray.length) {
+                if (leftArray[leftIndex] < rightArray[rightIndex]) {
+                    array[i] = leftArray[leftIndex];
+                    leftIndex++;
+                } else {
+                    array[i] = rightArray[rightIndex];
+                    rightIndex++;
+                }
+            } else if (leftIndex < leftArray.length) {
+                array[i] = leftArray[leftIndex];
+                leftIndex++;
+            } else if (rightIndex < rightArray.length) {
+                array[i] = rightArray[rightIndex];
+                rightIndex++;
+            }
+        }
     }
 
 }
