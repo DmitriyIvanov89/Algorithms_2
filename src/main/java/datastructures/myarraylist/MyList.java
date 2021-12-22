@@ -1,19 +1,23 @@
 package datastructures.myarraylist;
 
-public interface MyList {
+public interface MyList<T> {
 
-    /*
-    * add(E e)
-    * add(int index,E element)
-    * clear()
-    * isEmpty()
-    * remove(int index)
-    * remove(Object o)
-    * set(int index, E element)
-    * size()
-    * toArray()*/
+    public boolean add(T element);
 
-    
+    public void add(int index, T element);
 
+    public void clear();
+
+    public boolean isEmpty();
+
+    public T remove(int index);
+
+    public boolean remove(T element);
+
+    public T set(int index, T element);
+
+    public void size();
+
+    public Object[] toArray();
 
 }
