@@ -20,6 +20,8 @@ public class Training {
         tree.insertNode(35);
         tree.insertNode(31);
         tree.insertNode(28);
-        
+
+        System.out.println(tree.findNodeByValue(20));
+
     }
 }
