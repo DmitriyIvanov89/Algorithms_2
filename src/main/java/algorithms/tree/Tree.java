@@ -37,4 +37,19 @@ public class Tree {
         }
     }
 
+    public Node findNodeByValue(int value) {
+        Node currNode = root;
+        while (currNode.getValue() != value) {
+            if (value < currNode.getValue()) {
+                currNode = currNode.getLeftChild();
+            } else {
+                currNode = currNode.getRightChild();
+            }
+            if (currNode == null) {
+                return null;
+            }
+        }
+        return currNode;
+    }
+
 }

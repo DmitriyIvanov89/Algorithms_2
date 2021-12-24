@@ -38,4 +38,9 @@ public class Node {
     public void setRightChild(Node rightChild) {
         this.rightChild = rightChild;
     }
+
+    @Override
+    public String toString() {
+        return String.format("Node value : %d, name: %s", value, Node.class.getName());
+    }
 }
