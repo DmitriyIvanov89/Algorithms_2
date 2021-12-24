@@ -1,8 +1,8 @@
 package datastructures.myarraylist;
 
-public interface MyList<T> {
+public interface MyList<T> extends Iterable<T> {
 
-    public boolean add(T element);
+    public T get(int index);
 
     public void add(int index, T element);
 
@@ -14,9 +14,9 @@ public interface MyList<T> {
 
     public boolean remove(T element);
 
-    public T set(int index, T element);
+    public void set(int index, T element);
 
-    public void size();
+    public int size();
 
     public Object[] toArray();
 
