@@ -37,22 +37,29 @@ public class MyArrayList<T> implements MyList<T> {
         array[index] = element;
     }
 
+    private void increaseCapacity() {
+        capacity = capacity * 2;
+        Object[] tmp = new Object[capacity];
+        System.arraycopy(array, 0, tmp, 0, array.length);
+        array = tmp;
+    }
+
     @Override
     public void add(T element) {
-        /**
-         * если полный, должны изменить capacity в 1,5
-         */
+        if (size >= capacity) {
+            increaseCapacity();
+        }
         array[size++] = element;
     }
 
     @Override
     public void clear() {
-
+        
     }
 
     @Override
     public boolean isEmpty() {
-        return false;
+        return size == 0;
     }
 
     @Override
