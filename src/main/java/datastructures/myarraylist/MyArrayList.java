@@ -40,7 +40,7 @@ public class MyArrayList<T> implements MyList<T> {
     private void increaseCapacity() {
         capacity = capacity * 2;
         Object[] tmp = new Object[capacity];
-        System.arraycopy(array, 0, tmp, 0, array.length);
+        System.arraycopy(array, 0, tmp, 0, array.length - 1);
         array = tmp;
     }
 
@@ -54,7 +54,7 @@ public class MyArrayList<T> implements MyList<T> {
 
     @Override
     public void clear() {
-        
+
     }
 
     @Override
