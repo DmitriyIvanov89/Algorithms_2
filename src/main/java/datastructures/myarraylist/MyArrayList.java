@@ -7,7 +7,7 @@ import java.util.function.Consumer;
 
 public class MyArrayList<T> implements MyList<T> {
 
-    private long size;
+    private int size;
     private int capacity;
     private final int DEFAULT_CAPACITY = 16;
     private Object[] array;
@@ -18,7 +18,13 @@ public class MyArrayList<T> implements MyList<T> {
 
     public MyArrayList(int capacity) {
         this.capacity = capacity;
-        array = new Object[capacity];
+        if (capacity > 0) {
+            array = new Object[capacity];
+        } else if (capacity == 0) {
+            array = new Object[0];
+        } else {
+            throw new IllegalArgumentException("Capacity <= 0 !!!");
+        }
     }
 
     @Override
@@ -28,7 +34,15 @@ public class MyArrayList<T> implements MyList<T> {
 
     @Override
     public void add(int index, T element) {
+        array[index] = element;
+    }
 
+    @Override
+    public void add(T element) {
+        /**
+         * если полный, должны изменить capacity в 1,5
+         */
+        array[size++] = element;
     }
 
     @Override

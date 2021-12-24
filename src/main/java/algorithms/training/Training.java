@@ -2,6 +2,9 @@ package algorithms.training;
 
 import algorithms.tree.Tree;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class Training {
     public static void main(String[] args) {
@@ -22,6 +25,8 @@ public class Training {
         tree.insertNode(28);
 
         System.out.println(tree.findNodeByValue(20));
+
+        List<String> list = new ArrayList<>();
 
     }
 }

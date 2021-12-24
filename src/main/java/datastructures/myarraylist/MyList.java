@@ -6,6 +6,8 @@ public interface MyList<T> extends Iterable<T> {
 
     public void add(int index, T element);
 
+    public void add(T element);
+
     public void clear();
 
     public boolean isEmpty();
