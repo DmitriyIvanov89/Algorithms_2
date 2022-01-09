@@ -11,6 +11,21 @@ public class MyArrayList<E> implements MyList<E> {
     private final static int DEFAULT_CAPACITY = 10;
     private E[] array;
 
+    public MyArrayList() {
+        array = (E[]) new Object[DEFAULT_CAPACITY];
+    }
+
+    public MyArrayList(int capacity) {
+        this.capacity = capacity;
+        if (capacity > 0) {
+            array = (E[]) new Object[capacity];
+        } else if (capacity == 0) {
+            array = (E[]) new Object[0];
+        } else {
+            throw new IllegalArgumentException("Capacity can't be < 0");
+        }
+    }
+
 
     @Override
     public int size() {
