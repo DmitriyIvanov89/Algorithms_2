@@ -68,12 +68,33 @@ public class MyArrayList<E> implements MyList<E> {
 
     @Override
     public E remove(int index) {
-        return null;
+
+        E oldValue = array[index];
+
+        for (int i = index; i < size; i++) {
+            array[i] = array[i - 1];
+        }
+        return oldValue;
     }
 
     @Override
     public boolean remove(E element) {
-        return false;
+        int pos = getIndex(element);
+        if (pos < 0) return false;
+        remove(pos);
+        return true;
+    }
+
+    private int getIndex(E element) {
+        if (element == null) {
+            return -1;
+        }
+        for (int i = 0; i < size; i++) {
+            if (element.equals(array[i])) {
+                return i;
+            }
+        }
+        return -1;
     }
 
     @Override
