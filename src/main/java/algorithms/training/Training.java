@@ -6,13 +6,15 @@ import datastructures.myarraylist.MyList;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.StringTokenizer;
 
 
 public class Training {
     public static void main(String[] args) {
 
 
-        
+        List<String> list = new ArrayList<>();
+
 
     }
 }

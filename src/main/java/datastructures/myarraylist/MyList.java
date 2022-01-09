@@ -1,25 +1,25 @@
 package datastructures.myarraylist;
 
-public interface MyList<T> extends Iterable<T> {
+public interface MyList<E> extends Iterable<E> {
 
-    public T get(int index);
+    int size();
 
-    public void add(int index, T element);
+    boolean isEmpty();
 
-    public void add(T element);
+    void add(int index);
 
-    public void clear();
+    boolean add(E element);
 
-    public boolean isEmpty();
+    E remove(int index);
 
-    public T remove(int index);
+    boolean remove(E element);
 
-    public boolean remove(T element);
+    E get(int index);
 
-    public void set(int index, T element);
+    E set(int index, E element);
 
-    public int size();
+    void clear();
 
-    public Object[] toArray();
+    Object[] toArray();
 
 }
