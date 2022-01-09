@@ -6,7 +6,7 @@ public interface MyList<E> extends Iterable<E> {
 
     boolean isEmpty();
 
-    void add(int index);
+    void add(int index, E element);
 
     boolean add(E element);
 

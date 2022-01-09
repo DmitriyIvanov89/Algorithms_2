@@ -26,25 +26,44 @@ public class MyArrayList<E> implements MyList<E> {
         }
     }
 
-
     @Override
     public int size() {
-        return 0;
+        return size;
     }
 
     @Override
     public boolean isEmpty() {
-        return false;
+        return size == 0;
     }
 
     @Override
-    public void add(int index) {
+    public void add(int index, E element) {
+        if (index < 0) return;
+        if (size + 1 >= capacity) increaseCapacity();
+        if (index > size) index = size;
 
+        for (int i = size; i < index; i++) {
+            array[i] = array[i - 1];
+        }
+        array[index] = element;
+        size++;
     }
 
     @Override
     public boolean add(E element) {
-        return false;
+        if (size >= capacity) {
+            increaseCapacity();
+        }
+        array[size++] = element;
+        return true;
+    }
+
+    private void increaseCapacity() {
+        capacity = capacity * 2;
+        E[] newArray = (E[]) new Object[capacity];
+        System.arraycopy(array, 0, newArray, 0, array.length);
+        array = newArray;
+        newArray = null;
     }
 
     @Override
@@ -59,12 +78,13 @@ public class MyArrayList<E> implements MyList<E> {
 
     @Override
     public E get(int index) {
-        return null;
+        return array[index];
     }
 
     @Override
     public E set(int index, E element) {
-        return null;
+        array[index] = element;
+        return element;
     }
 
     @Override
