@@ -1,12 +1,7 @@
 package algorithms.training;
 
-import algorithms.tree.Tree;
 import datastructures.myarraylist.MyArrayList;
-import datastructures.myarraylist.MyList;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.StringTokenizer;
+import datastructures.MyList;
 
 
 public class Training {

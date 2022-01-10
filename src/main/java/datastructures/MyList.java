@@ -1,4 +1,4 @@
-package datastructures.myarraylist;
+package datastructures;
 
 public interface MyList<E> extends Iterable<E> {
 
