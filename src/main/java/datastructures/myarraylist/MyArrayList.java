@@ -88,15 +88,6 @@ public class MyArrayList<E> implements MyList<E> {
         return true;
     }
 
-//    private void shiftToLeft(int start) {
-//        size--;
-//        if (size <= 0) return;
-//        if (size != start) {
-//            System.arraycopy(array, start + 1, array, start, size - start);
-//        }
-//        array[size] = null;
-//    }
-
     private int getIndex(E element) {
         if (element == null) {
             return -1;
@@ -122,7 +113,10 @@ public class MyArrayList<E> implements MyList<E> {
 
     @Override
     public void clear() {
-
+        for (int i = 0; i < size; i++) {
+            array[i] = null;
+        }
+        size = 0;
     }
 
     @Override
