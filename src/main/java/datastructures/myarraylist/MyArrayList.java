@@ -9,18 +9,21 @@ public class MyArrayList<E> implements MyList<E> {
     private int size;
     private int capacity;
     private final static int DEFAULT_CAPACITY = 10;
-    private E[] array;
+    private final static int EMPTY_LIST = 0;
+    private Object[] array;
 
     public MyArrayList() {
-        array = (E[]) new Object[DEFAULT_CAPACITY];
+        capacity = DEFAULT_CAPACITY;
+        array = new Object[capacity];
     }
 
     public MyArrayList(int capacity) {
         this.capacity = capacity;
         if (capacity > 0) {
-            array = (E[]) new Object[capacity];
+            this.array = new Object[capacity];
         } else if (capacity == 0) {
-            array = (E[]) new Object[0];
+            this.capacity = EMPTY_LIST;
+            this.array = new Object[capacity];
         } else {
             throw new IllegalArgumentException("Capacity can't be < 0");
         }
@@ -60,21 +63,21 @@ public class MyArrayList<E> implements MyList<E> {
 
     private void increaseCapacity() {
         capacity = capacity * 2;
-        E[] newArray = (E[]) new Object[capacity];
-        System.arraycopy(array, 0, newArray, 0, array.length);
+        Object[] newArray = new Object[capacity];
+        for (int i = 0; i < size; i++) {
+            newArray[i] = array[i];
+            array[i] = null;
+        }
         array = newArray;
-        newArray = null;
     }
 
     @Override
     public E remove(int index) {
-
-        E oldValue = array[index];
-
+        Object oldVal = array[index];
         for (int i = index; i < size; i++) {
-            array[i] = array[i - 1];
+            array[i] = array[i + 1];
         }
-        return oldValue;
+        return (E) oldVal;
     }
 
     @Override
@@ -84,6 +87,15 @@ public class MyArrayList<E> implements MyList<E> {
         remove(pos);
         return true;
     }
+
+//    private void shiftToLeft(int start) {
+//        size--;
+//        if (size <= 0) return;
+//        if (size != start) {
+//            System.arraycopy(array, start + 1, array, start, size - start);
+//        }
+//        array[size] = null;
+//    }
 
     private int getIndex(E element) {
         if (element == null) {
@@ -99,7 +111,7 @@ public class MyArrayList<E> implements MyList<E> {
 
     @Override
     public E get(int index) {
-        return array[index];
+        return (E) array[index];
     }
 
     @Override
