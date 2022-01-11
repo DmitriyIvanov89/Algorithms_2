@@ -21,4 +21,20 @@ public class MyQueue<E> implements MyQueueInterface<E> {
     public boolean isEmpty() {
         return list.isEmpty();
     }
+
+    /**
+     * private static void testQueue() {
+        MyQueueInterface<Integer> myQueue = new MyQueue<>();
+        for (int i = 0; i < 10; i++) {
+            System.out.println(i);
+            myQueue.add(i);
+        }
+
+        System.out.println("-----");
+
+        while (!myQueue.isEmpty()) {
+            System.out.println(myQueue.remove());
+        }
+    }
+     */
 }
