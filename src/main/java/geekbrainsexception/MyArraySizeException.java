@@ -1,9 +1,9 @@
 package geekbrainsexception;
 
-public class MyArraySizeException extends ArrayIndexOutOfBoundsException {
+public class MyArraySizeException extends MyException {
 
-    public MyArraySizeException(String message) {
-        super(message);
+    public MyArraySizeException() {
+        super("Array size must be 4 X 4!");
     }
 
 }
