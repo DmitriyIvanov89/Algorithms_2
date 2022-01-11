@@ -76,9 +76,10 @@ public class MyArrayList<E> implements MyList<E> {
     @Override
     public E remove(int index) {
         Object oldVal = array[index];
-        for (int i = index; i < size; i++) {
+        for (int i = index; i < size - 1; i++) {
             array[i] = array[i + 1];
         }
+        size--;
         return (E) oldVal;
     }
 
