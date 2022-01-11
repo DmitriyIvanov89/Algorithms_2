@@ -1,16 +1,17 @@
-import datastructures.MyQueueInterface;
-import datastructures.MyStackInterface;
-import datastructures.myarraylist.MyArrayList;
-import datastructures.MyList;
-import datastructures.myqueue.MyQueue;
-import datastructures.mystack.MyStack;
-
-import java.util.*;
-import java.util.concurrent.ArrayBlockingQueue;
-
+import geekbrainsexception.MyArraySizeException;
 
 public class Training {
     public static void main(String[] args) {
+
+        String[][] array = {{"1"}, {"2"}, {"3"}, {"4"}};
+        
+
+    }
+
+    public static void checkArray(String[][] array) {
+        if (array.length != 4) {
+            throw new MyArraySizeException("length of array != 4");
+        }
 
     }
 }
