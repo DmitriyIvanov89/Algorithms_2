@@ -1,6 +1,6 @@
 package datastructures;
 
-public interface Queue<E> {
+public interface MyQueueInterface<E> {
 
     void add(E element);
 
