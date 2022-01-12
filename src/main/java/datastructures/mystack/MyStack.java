@@ -1,7 +1,7 @@
 package datastructures.mystack;
 
-import datastructures.MyList;
-import datastructures.MyStackInterface;
+import datastructures.myinterfaces.MyList;
+import datastructures.myinterfaces.MyStackInterface;
 import datastructures.myarraylist.MyArrayList;
 
 public class MyStack<E> implements MyStackInterface<E> {
