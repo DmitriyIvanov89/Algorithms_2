@@ -1,6 +1,6 @@
 package datastructures.myarraylist;
 
-import datastructures.MyList;
+import datastructures.myinterfaces.MyList;
 
 import java.util.Iterator;
 import java.util.Spliterator;

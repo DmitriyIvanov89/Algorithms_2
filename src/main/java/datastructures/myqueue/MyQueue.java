@@ -1,6 +1,6 @@
 package datastructures.myqueue;
 
-import datastructures.MyQueueInterface;
+import datastructures.myinterfaces.MyQueueInterface;
 import datastructures.myarraylist.MyArrayList;
 
 public class MyQueue<E> implements MyQueueInterface<E> {
