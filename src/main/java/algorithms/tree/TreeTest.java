@@ -13,23 +13,24 @@ public class TreeTest {
         tree.insertNode(6);
         tree.insertNode(4);
         tree.insertNode(7);
-        tree.insertNode(40);
-        tree.insertNode(38);
-        tree.insertNode(52);
-        tree.insertNode(35);
-        tree.insertNode(31);
-        tree.insertNode(28);
+
+        deepSearch(tree.getRoot());
+        System.out.println("Test deep ok");
+        widthSearch(tree.getRoot());
+        System.out.println("Test width OK");
     }
 
-    public static Node wildSearch(Node root) {
+    public static Node widthSearch(Node root) {
         MyQueue<Node> myQueue = new MyQueue<>();
         if (root != null) {
             Node currNode = myQueue.remove();
-            if (currNode.getRightChild() != null) {
-                myQueue.add(currNode.getRightChild());
-            }
-            if (currNode.getLeftChild() != null) {
-                myQueue.add(currNode.getLeftChild());
+            if (currNode != null) {
+                if (currNode.getRightChild() != null) {
+                    myQueue.add(currNode.getRightChild());
+                }
+                if (currNode.getLeftChild() != null) {
+                    myQueue.add(currNode.getLeftChild());
+                }
             }
         }
         return myQueue.remove();
@@ -39,16 +40,16 @@ public class TreeTest {
         MyStack<Node> myStack = new MyStack<>();
         if (root != null) {
             myStack.push(root);
-
             while (!myStack.isEmpty()) {
                 Node currNode = myStack.pop();
-                if (currNode.getRightChild() != null) {
-                    myStack.push(currNode.getRightChild());
+                if (currNode != null) {
+                    if (currNode.getRightChild() != null) {
+                        myStack.push(currNode.getRightChild());
+                    }
+                    if (currNode.getLeftChild() != null) {
+                        myStack.push(currNode.getLeftChild());
+                    }
                 }
-                if (currNode.getLeftChild() != null) {
-                    myStack.push(currNode.getLeftChild());
-                }
-
             }
         }
         return myStack.pop();

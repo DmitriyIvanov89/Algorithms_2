@@ -8,6 +8,10 @@ public class Tree {
         this.root = null;
     }
 
+    public Node getRoot() {
+        return root;
+    }
+
     public void insertNode(int value) {
         Node newNode = new Node();
         newNode.setValue(value);
@@ -52,6 +56,6 @@ public class Tree {
         return currNode;
     }
 
-    
+
 
 }
