@@ -1,4 +1,7 @@
-package geekbrainsexception;
+package geekbrains.exceptions;
+
+import geekbrains.exceptions.MyArrayDataException;
+import geekbrains.exceptions.MyArraySizeException;
 
 public class MyExceptionTest {
     public static void main(String[] args) {
