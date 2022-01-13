@@ -1,4 +1,4 @@
-package geekbrainsexception;
+package geekbrains.exceptions;
 
 public class MyException extends RuntimeException {
 
