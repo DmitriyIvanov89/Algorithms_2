@@ -1,16 +1,15 @@
 package streamapi;
 
+import com.sun.org.apache.xpath.internal.operations.Or;
+
 import java.sql.SQLOutput;
 import java.util.*;
 import java.util.function.Consumer;
-import java.util.stream.DoubleStream;
-import java.util.stream.IntStream;
-import java.util.stream.LongStream;
-import java.util.stream.Stream;
+import java.util.stream.*;
 
 public class StreamAPIDemo {
 
-    private static double val1 = 2.0, val2 = 2.0;
+//    private static double val1 = 2.0, val2 = 2.0;
 
     public static void main(String[] args) {
 
@@ -69,13 +68,58 @@ public class StreamAPIDemo {
          */
 
         /**
-        Stream<Pizza> stream = Stream.of(new Pizza("Pepperoni", 90));
-        stream.flatMap(pizza -> Stream.of(
-                String.format("Pizza: %s. price: $%d", pizza.getTitle(), pizza.getPrice()),
-                String.format("(HAPPY HOURS DISCOUNT -50%%)%nPizza: %s, price: $%d", pizza.getTitle(), pizza.getPrice() / 2)
-        )).forEach(System.out::println);
-        */
+         Stream<Pizza> stream = Stream.of(new Pizza("Pepperoni", 90));
+         stream.flatMap(pizza -> Stream.of(
+         String.format("Pizza: %s. price: $%d", pizza.getTitle(), pizza.getPrice()),
+         String.format("(HAPPY HOURS DISCOUNT -50%%)%nPizza: %s, price: $%d", pizza.getTitle(), pizza.getPrice() / 2)
+         )).forEach(System.out::println);
+         */
 
+        /**
+         List<Ticket> tickets = new ArrayList<>();
+         tickets.add(new Ticket("A", 100));
+         tickets.add(new Ticket("B", 75));
+
+         Ticket minTicketPrice = tickets.stream().min(Ticket::compare).get();
+         System.out.printf("Minimum price of ticket class: %s, $%d%n", minTicketPrice.getTicketClass(), minTicketPrice.getPrice());
+
+         Ticket maxTicketPrice = tickets.stream().max(Ticket::compare).get();
+         System.out.printf("Maximum price of ticket class: %s, $%d%n", maxTicketPrice.getTicketClass(), maxTicketPrice.getPrice());
+
+         Stream<Integer> numbers = Stream.of(1, 2, 3, 4, 5);
+         int result = numbers.reduce(0, (val1, val2) -> val1 + val2);
+         System.out.println(result);
+
+         int result2 = numbers.reduce(0, (val1, val2) -> {
+         if (val2 < 5) {
+         return val1 + val2;
+         } else {
+         return val1;
+         }
+         }, (val1, val2) -> val1 + val2);
+
+         System.out.println(result2);
+         */
+
+        /**
+         Stream<Integer> stream = Stream.of();
+         Optional<Integer> result = stream.min(Integer::compare);
+         System.out.println(result.orElseGet(() -> new Random().nextInt(100)));
+         */
+
+
+        /**
+         Stream<String> values = Stream.of("Value 1", "Value 2", "Value 3", "Value 4", "Value 5");
+         values.collect(Collectors.toList()).forEach(System.out::println);
+         values.collect(Collectors.toCollection(TreeSet::new)).forEach(System.out::println);
+
+         Stream<Order> orders = Stream.of(new Order(0, "Context 1"), new Order(1, "Context 2"));
+         orders.collect(Collectors.toMap(Order::getId, Order::getContext))
+         .forEach((key, value) -> System.out.printf("Key: %d, value: %s%n", key, value));
+
+         Stream<String> values = Stream.of("Value 1", "Value 2", "Value 3", "Value 4", "Value 5");
+         values.collect(ArrayList::new, ArrayList::add, ArrayList::addAll).forEach(System.out::println);
+         */
 
         
 
