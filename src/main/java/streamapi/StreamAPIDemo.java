@@ -1,11 +1,7 @@
 package streamapi;
 
-import com.sun.org.apache.xpath.internal.operations.Bool;
-import com.sun.org.apache.xpath.internal.operations.Or;
-
-import java.sql.SQLOutput;
-import java.util.*;
-import java.util.function.Consumer;
+import java.util.Map;
+import java.util.function.Function;
 import java.util.stream.*;
 
 public class StreamAPIDemo {
@@ -123,82 +119,93 @@ public class StreamAPIDemo {
          */
 
         /**
-        Stream<Computer> stream = Stream.of(new Computer("Desktop", "Apple", "IMac", 2299),
-                new Computer("Laptop", "ASUS", "ASUS ROG", 3122),
-                new Computer("Laptop", "Google", "GooglePixelBook", 799),
-                new Computer("Desktop", "Dell", "Insperon", 549),
-                new Computer("Laptop", "ASUS", "ASUS ZenBook Pro", 1699),
-                new Computer("Laptop", "Apple", "MacBook", 1299));
+         Stream<Computer> stream = Stream.of(new Computer("Desktop", "Apple", "IMac", 2299),
+         new Computer("Laptop", "ASUS", "ASUS ROG", 3122),
+         new Computer("Laptop", "Google", "GooglePixelBook", 799),
+         new Computer("Desktop", "Dell", "Insperon", 549),
+         new Computer("Laptop", "ASUS", "ASUS ZenBook Pro", 1699),
+         new Computer("Laptop", "Apple", "MacBook", 1299));
 
-        Map<Boolean, List<Computer>> computers = stream.collect(Collectors.partitioningBy(c -> c.getPrice() > 1000));
+         Map<Boolean, List<Computer>> computers = stream.collect(Collectors.partitioningBy(c -> c.getPrice() > 1000));
 
-        for (Map.Entry<Boolean, List<Computer>> item : computers.entrySet()) {
-            if (item.getKey()) {
-                showProducts("more", item);
-            } else {
-                showProducts("less", item);
-            }
-        }
-        Map<String, List<Computer>> computers = stream.collect(Collectors.groupingBy(Computer::getType));
+         for (Map.Entry<Boolean, List<Computer>> item : computers.entrySet()) {
+         if (item.getKey()) {
+         showProducts("more", item);
+         } else {
+         showProducts("less", item);
+         }
+         }
+         Map<String, List<Computer>> computers = stream.collect(Collectors.groupingBy(Computer::getType));
 
-        for (Map.Entry<String, List<Computer>> item : computers.entrySet()) {
-            System.out.println("Type: " + item.getKey());
+         for (Map.Entry<String, List<Computer>> item : computers.entrySet()) {
+         System.out.println("Type: " + item.getKey());
 
-            for (Computer c : item.getValue()) {
-                System.out.printf("Company: %s, Model: %s, Price: %d %n", c.getCompany(), c.getModel(), c.getPrice());
-            }
+         for (Computer c : item.getValue()) {
+         System.out.printf("Company: %s, Model: %s, Price: %d %n", c.getCompany(), c.getModel(), c.getPrice());
+         }
 
-            System.out.println();
-        }
+         System.out.println();
+         }
 
-        Map<String, Long> computers = stream.collect(Collectors.groupingBy(Computer::getCompany, Collectors.counting()));
+         Map<String, Long> computers = stream.collect(Collectors.groupingBy(Computer::getCompany, Collectors.counting()));
 
-        for (Map.Entry<String, Long> item : computers.entrySet()) {
-            System.out.printf("Total value of computers in %s: %d %n", item.getKey(), item.getValue());
-        }
+         for (Map.Entry<String, Long> item : computers.entrySet()) {
+         System.out.printf("Total value of computers in %s: %d %n", item.getKey(), item.getValue());
+         }
 
-        Map<String, Integer> computers = stream.collect(Collectors.groupingBy(Computer::getType,
-                Collectors.summingInt(Computer::getPrice)));
+         Map<String, Integer> computers = stream.collect(Collectors.groupingBy(Computer::getType,
+         Collectors.summingInt(Computer::getPrice)));
 
-        for (Map.Entry<String, Integer> item : computers.entrySet()) {
-            System.out.printf("%s total cost: %d %n", item.getKey(), item.getValue());
-        }
+         for (Map.Entry<String, Integer> item : computers.entrySet()) {
+         System.out.printf("%s total cost: %d %n", item.getKey(), item.getValue());
+         }
 
-        Map<String, Optional<Computer>> computers = stream.collect(Collectors.groupingBy(Computer::getType,
-                Collectors.minBy(Comparator.comparing(Computer::getPrice))));
+         Map<String, Optional<Computer>> computers = stream.collect(Collectors.groupingBy(Computer::getType,
+         Collectors.minBy(Comparator.comparing(Computer::getPrice))));
 
-        for (Map.Entry<String, Optional<Computer>> item : computers.entrySet()) {
-            System.out.printf("Minimum price of %s on the model: %s %n", item.getKey(), item.getValue().get().getModel());
-        }
+         for (Map.Entry<String, Optional<Computer>> item : computers.entrySet()) {
+         System.out.printf("Minimum price of %s on the model: %s %n", item.getKey(), item.getValue().get().getModel());
+         }
 
-        Map<String, List<String>> computers = stream.collect(Collectors.groupingBy(Computer::getType,
-                Collectors.mapping(Computer::getCompany, Collectors.toList())));
+         Map<String, List<String>> computers = stream.collect(Collectors.groupingBy(Computer::getType,
+         Collectors.mapping(Computer::getCompany, Collectors.toList())));
 
 
-        for (Map.Entry<String, List<String>> item : computers.entrySet()) {
-            System.out.println(item.getKey());
+         for (Map.Entry<String, List<String>> item : computers.entrySet()) {
+         System.out.println(item.getKey());
 
-            for (String model : item.getValue()) {
-                System.out.println(model);
-            }
+         for (String model : item.getValue()) {
+         System.out.println(model);
+         }
 
-            System.out.println();
-        }
+         System.out.println();
+         }
 
          */
+
+        /**
+        String word = Stream.of("Oleg", "Oleg", "Anton", "Oleg", "Bob", "Bob", "Oleg", "Dima", "Maga")
+                .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()))
+                .entrySet().stream()
+                .max(Map.Entry.comparingByKey())
+                .map(Map.Entry::getKey)
+                .orElse(null);
+
+        System.out.printf("Most popular word in array: %s%n", word);
+        */
     }
 
     /**
-    private static void showProducts(String status, Map.Entry<Boolean, List<Computer>> item) {
-        System.out.printf("Price is %s than $1000: %n", status);
+     private static void showProducts(String status, Map.Entry<Boolean, List<Computer>> item) {
+     System.out.printf("Price is %s than $1000: %n", status);
 
-        for (Computer c : item.getValue()) {
-            System.out.printf("Type: %s, Company: %s, Model: %s %n", c.getType(), c.getCompany(), c.getModel());
-        }
+     for (Computer c : item.getValue()) {
+     System.out.printf("Type: %s, Company: %s, Model: %s %n", c.getType(), c.getCompany(), c.getModel());
+     }
 
-        System.out.println();
+     System.out.println();
 
-    }
+     }
      */
 
 
