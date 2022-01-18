@@ -1,6 +1,8 @@
 package streamapi;
 
+import java.util.Arrays;
 import java.util.Map;
+import java.util.OptionalDouble;
 import java.util.function.Function;
 import java.util.stream.*;
 
@@ -104,7 +106,6 @@ public class StreamAPIDemo {
          System.out.println(result.orElseGet(() -> new Random().nextInt(100)));
          */
 
-
         /**
          Stream<String> values = Stream.of("Value 1", "Value 2", "Value 3", "Value 4", "Value 5");
          values.collect(Collectors.toList()).forEach(System.out::println);
@@ -184,15 +185,29 @@ public class StreamAPIDemo {
          */
 
         /**
-        String word = Stream.of("Oleg", "Oleg", "Anton", "Oleg", "Bob", "Bob", "Oleg", "Dima", "Maga")
-                .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()))
-                .entrySet().stream()
-                .max(Map.Entry.comparingByKey())
-                .map(Map.Entry::getKey)
-                .orElse(null);
+         String word = Stream.of("Oleg", "Oleg", "Anton", "Oleg", "Bob", "Bob", "Oleg", "Dima", "Maga")
+         .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()))
+         .entrySet().stream()
+         .max(Map.Entry.comparingByKey())
+         .map(Map.Entry::getKey)
+         .orElse(null);
 
-        System.out.printf("Most popular word in array: %s%n", word);
-        */
+         System.out.printf("Most popular word in array: %s%n", word);
+         */
+
+        /**
+        Person[] persons = {new Person("Bob", 35, 4500),
+                new Person("Anton", 36, 8000),
+                new Person("Dima", 32, 1500),
+                new Person("Aleksey", 45, 6500)};
+
+        Arrays.stream(persons).mapToInt(Person::getSalary).average();
+        int limit = 2;
+        Arrays.stream(persons)
+                .sorted(((o1, o2) -> o2.getAge() - o1.getAge()))
+                .limit(limit).map(Person::getName)
+                .forEach(System.out::println);
+         */
     }
 
     /**
