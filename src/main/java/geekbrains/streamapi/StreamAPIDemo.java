@@ -6,7 +6,7 @@ public class StreamAPIDemo {
 
     public static void main(String[] args) {
 
-        /**
+        /*
          Operation operation = new Operation() {
         @Override public double getResult(double val1, double val2) {
         return val1 + val2;
@@ -40,13 +40,13 @@ public class StreamAPIDemo {
          System.out.println(val2);
          */
 
-        /**
+        /*
          List<String> list = new ArrayList<>();
          Collections.addAll(list, "Tom", "jeff", "Edward");
          list.stream().filter(name -> name.length() >= 4).forEach(System.out::println);
          */
 
-        /**
+        /*
          Stream<String> passwords = Stream.of("3sa215", "4mxj2o", "9okfgy6");
          passwords.filter(password -> password.length() == 7).forEach(System.out::println);
 
@@ -55,12 +55,12 @@ public class StreamAPIDemo {
          stream.limit(2).forEach(System.out::println);
          */
 
-        /**
+        /*
          Stream<Film> stream = Stream.of(new Film("Deadpool 2", 100.0), new Film("Avengers: Infinity War", 75.0));
          stream.map(Film::getTitle).forEach(System.out::println);
          */
 
-        /**
+        /*
          Stream<Pizza> stream = Stream.of(new Pizza("Pepperoni", 90));
          stream.flatMap(pizza -> Stream.of(
          String.format("Pizza: %s. price: $%d", pizza.getTitle(), pizza.getPrice()),
@@ -68,7 +68,7 @@ public class StreamAPIDemo {
          )).forEach(System.out::println);
          */
 
-        /**
+        /*
          List<Ticket> tickets = new ArrayList<>();
          tickets.add(new Ticket("A", 100));
          tickets.add(new Ticket("B", 75));
@@ -94,13 +94,13 @@ public class StreamAPIDemo {
          System.out.println(result2);
          */
 
-        /**
+        /*
          Stream<Integer> stream = Stream.of();
          Optional<Integer> result = stream.min(Integer::compare);
          System.out.println(result.orElseGet(() -> new Random().nextInt(100)));
          */
 
-        /**
+        /*
          Stream<String> values = Stream.of("Value 1", "Value 2", "Value 3", "Value 4", "Value 5");
          values.collect(Collectors.toList()).forEach(System.out::println);
          values.collect(Collectors.toCollection(TreeSet::new)).forEach(System.out::println);
@@ -113,7 +113,7 @@ public class StreamAPIDemo {
          values.collect(ArrayList::new, ArrayList::add, ArrayList::addAll).forEach(System.out::println);
          */
 
-        /**
+        /*
          Stream<Computer> stream = Stream.of(new Computer("Desktop", "Apple", "IMac", 2299),
          new Computer("Laptop", "ASUS", "ASUS ROG", 3122),
          new Computer("Laptop", "Google", "GooglePixelBook", 799),
@@ -178,7 +178,7 @@ public class StreamAPIDemo {
 
          */
 
-        /**
+        /*
          String word = Stream.of("Oleg", "Oleg", "Anton", "Oleg", "Bob", "Bob", "Oleg", "Dima", "Maga")
          .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()))
          .entrySet().stream()
@@ -189,7 +189,7 @@ public class StreamAPIDemo {
          System.out.printf("Most popular word in array: %s%n", word);
          */
 
-        /**
+        /*
         Person[] persons = {new Person("Bob", 35, 4500),
                 new Person("Anton", 36, 8000),
                 new Person("Dima", 32, 1500),
@@ -204,7 +204,7 @@ public class StreamAPIDemo {
          */
     }
 
-    /**
+    /*
      private static void showProducts(String status, Map.Entry<Boolean, List<Computer>> item) {
      System.out.printf("Price is %s than $1000: %n", status);
 
