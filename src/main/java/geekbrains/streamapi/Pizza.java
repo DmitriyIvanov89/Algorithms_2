@@ -1,4 +1,4 @@
-package streamapi;
+package geekbrains.streamapi;
 
 public class Pizza {
     private String title;

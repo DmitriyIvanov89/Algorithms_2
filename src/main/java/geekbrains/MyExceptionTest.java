@@ -1,4 +1,4 @@
-package geekbrains.exceptions;
+package geekbrains;
 
 import geekbrains.exceptions.MyArrayDataException;
 import geekbrains.exceptions.MyArraySizeException;
