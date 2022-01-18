@@ -2,7 +2,8 @@ import java.util.Arrays;
 
 /**
  * This is test javadoc
- * This is class with basic algorithms
+ * This is class with basic <string>algorithms</string>
+ * <1 src="doc-files" alt="bla"/>
  */
 
 public class Algorithms {
@@ -14,6 +15,12 @@ public class Algorithms {
 
     }
 
+    /**
+     * This method return factorial of number
+     * @param n - number for factorial
+     * @return int factorial
+     * @author divanov
+     */
     private static long getRecursiveFactorial(int n) {
         if (n <= 1) return n;
         else return n * getRecursiveFactorial(n - 1);
