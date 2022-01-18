@@ -1,5 +1,10 @@
 import java.util.Arrays;
 
+/**
+ * This is test javadoc
+ * This is class with basic algorithms
+ */
+
 public class Algorithms {
     public static void main(String[] args) {
 
