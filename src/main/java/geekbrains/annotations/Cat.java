@@ -1,6 +1,6 @@
 package geekbrains.annotations;
 
-@Table(title = "cats")
+@Table(title = "Cats")
 public class Cat {
     @Column
     int id;
