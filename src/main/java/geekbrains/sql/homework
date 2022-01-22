@@ -1,0 +1,21 @@
+CREATE TABLE students (
+    id              INTEGER PRIMARY KEY AUTOINCREMENT
+                            NOT NULL,
+    name            TEXT    NOT NULL,
+    passport_series INTEGER NOT NULL,
+    passport_number INTEGER NOT NULL
+);
+
+create table subjects (
+id integer primary key AUTOINCREMENT,
+name text
+);
+
+create table progress (
+id integer PRIMARY KEY AUTOINCREMENT,
+student_id integer,
+subject_id integer,
+score integer
+);
+
+
