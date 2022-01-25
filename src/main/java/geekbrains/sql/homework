@@ -1,35 +1,24 @@
 -- Создайте таблицу студенты (students): id, имя, серия паспорта, номер паспорта;
-CREATE TABLE students (
-    id              SERIAL PRIMARY KEY AUTOINCREMENT
-                            NOT NULL,
-    name            TEXT    NOT NULL,
-    passport_series NUMERIC NOT NULL,
-    passport_number NUMERIC NOT NULL
-);
+create table students
+(id serial primary key not null, name text not null, pas_ser numeric not null, pas_num numeric not null);
 
 -- Создайте таблицу Предметы (subjects): id, название предмета;
-create table subjects (
-id integer primary key AUTOINCREMENT,
-name text
-);
+create table subjects (id serial primary key,name text);
 
 -- Создайте таблицу Успеваемость (progress): id, студент, предмет, оценка;
 -- Оценка может находиться в пределах от 2 до 5;
--- Вывести список студентов, сдавших определенный предмет, на оценку выше 3;
-create table progress (
-id integer PRIMARY KEY AUTOINCREMENT,
+-- При удалении студента из таблицы, вся его успеваемость тоже должна быть удалена;
+create table progress
+(id serial primary key,
 student_id integer,
 subject_id integer,
-FOREIGN KEY (student_id) REFERENCES students (id) on DELETE CASCADE,
-FOREIGN KEY (subject_id) REFERENCES subjects (id) on DELETE CASCADE,
-mark integer CHECK (mark >=2 and mark <= 5));
+foreign key (student_id) references students (id) on delete cascade,
+foreign key (subject_id) references subjects (id) on delete cascade,
+mark integer check (mark >= 2 and mark <= 5));
 
-
--- При удалении студента из таблицы, вся его успеваемость тоже должна быть удалена;
+-- Вывести список студентов, сдавших определенный предмет, на оценку выше 3;
 -- Посчитать средний бал по определенному предмету;
-
 -- Посчитать средний балл по определенному студенту;
-
 -- Пара серия-номер паспорта должны быть уникальны в таблице Студенты;
 -- Найти три предмета, которые сдали наибольшее количество студентов.
 
