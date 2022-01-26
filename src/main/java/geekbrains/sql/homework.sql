@@ -1,4 +1,5 @@
 -- Создайте таблицу студенты (students): id, имя, серия паспорта, номер паспорта;
+-- Пара серия-номер паспорта должны быть уникальны в таблице Студенты;
 create table students
 (id serial primary key not null, name text not null, pas_ser numeric not null, pas_num numeric not null);
 
@@ -17,9 +18,14 @@ foreign key (subject_id) references subjects (id) on delete cascade,
 mark integer check (mark >= 2 and mark <= 5));
 
 -- Вывести список студентов, сдавших определенный предмет, на оценку выше 3;
--- Посчитать средний бал по определенному предмету;
--- Посчитать средний балл по определенному студенту;
--- Пара серия-номер паспорта должны быть уникальны в таблице Студенты;
--- Найти три предмета, которые сдали наибольшее количество студентов.
+select students.name from students join progress on students.id = progress.student_id where progress.mark >=3 and progress.subject_id = 2;
 
+-- Посчитать средний бал по определенному предмету;
+select subjects.name,avg(progress.mark) from progress join subjects on progress.subject_id = subjects.id group by 1;
+
+-- Посчитать средний балл по определенному студенту;
+select students.name, avg(progress.mark) from progress join students on progress.student_id = students.id group by 1;
+
+-- Найти три предмета, которые сдали наибольшее количество студентов.
+select subjects.name from subjects join progress on subjects.id = progress.subject_id where progress.mark >= 3;
 
