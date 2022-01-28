@@ -24,6 +24,13 @@ FOREIGN KEY (student_id) REFERENCES students (id) on DELETE CASCADE,
 FOREIGN KEY (subject_id) REFERENCES subjects (id) on DELETE CASCADE,
 mark integer CHECK (mark >=2 and mark <= 5));
 
+create table progerss (id serial primary key,
+student_id integer not null,
+subject_id integer not null,
+foreign key (student_id) references students(id) on delete cascade,
+foreign key (subject_id) references subjects(id) on delete cascade,
+score numeric not null check (score >= 2 and score <= 5));
+
 
 -- При удалении студента из таблицы, вся его успеваемость тоже должна быть удалена;
 -- Посчитать средний бал по определенному предмету;
