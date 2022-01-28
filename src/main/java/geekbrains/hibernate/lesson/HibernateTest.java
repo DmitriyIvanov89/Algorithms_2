@@ -9,6 +9,9 @@ public class HibernateTest {
         SessionFactory sessionFactory = new Configuration()
                 .configure("hibernate.cfg.xml")
                 .addAnnotatedClass(Catalog.class)
+                .addAnnotatedClass(Author.class)
+                .addAnnotatedClass(Book.class)
+                .addAnnotatedClass(Reader.class)
                 .buildSessionFactory();
 
         // CRUD
@@ -29,7 +32,7 @@ public class HibernateTest {
 //            session.beginTransaction();
 //            session.save(catalog);
 //            session.getTransaction().commit();
-
+            
             //READ
 //            session = sessionFactory.getCurrentSession();
 //            session.beginTransaction();
