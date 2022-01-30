@@ -1,5 +1,8 @@
 package geekbrains.hibernate.lesson;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
@@ -7,6 +10,9 @@ import java.util.List;
 
 @Entity
 @Table(name = "authors")
+@Getter
+@Setter
+@NoArgsConstructor
 public class Author {
 
     @Id
@@ -20,33 +26,6 @@ public class Author {
     @OneToMany(mappedBy = "author")
     @Cascade(org.hibernate.annotations.CascadeType.ALL)
     private List<Book> books;
-
-    public Author() {
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public List<Book> getBooks() {
-        return books;
-    }
-
-    public void setBooks(List<Book> books) {
-        this.books = books;
-    }
 
     @Override
     public String toString() {
