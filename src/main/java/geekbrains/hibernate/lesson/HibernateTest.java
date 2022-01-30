@@ -49,6 +49,9 @@ public class HibernateTest {
 //            System.out.println(catalog);\
 
 
+
+
+
         } finally {
             sessionFactory.close();
             session.close();
