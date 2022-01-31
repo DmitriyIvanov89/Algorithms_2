@@ -2,6 +2,8 @@
 -- Пара серия-номер паспорта должны быть уникальны в таблице Студенты;
 create table students
 (id serial primary key not null, name text not null, pas_ser numeric not null, pas_num numeric not null);
+alter table students add constraint seriya unique (pas_ser);
+alter table students add constraint number unique (pas_num);
 
 -- Создайте таблицу Предметы (subjects): id, название предмета;
 create table subjects (id serial primary key,name text);
