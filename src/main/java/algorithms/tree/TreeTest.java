@@ -14,7 +14,7 @@ public class TreeTest {
         tree.insertNode(6);
         tree.insertNode(4);
         tree.insertNode(7);
-        
+
 
     }
 
