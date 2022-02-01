@@ -1,6 +1,7 @@
-package geekbrains.hibernate.homework;
+package geekbrains.hibernate.homeworkgeekbrains;
 
 import lombok.*;
+import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
 import java.util.List;
@@ -20,13 +21,9 @@ public class Person {
     @Column(name = "name")
     private String name;
 
-    @ManyToMany
-    @JoinTable(
-            name = "person_product",
-            joinColumns = @JoinColumn(name = "person_id"),
-            inverseJoinColumns = @JoinColumn(name = "product_id")
-    )
-    private List<Product> products;
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "persons")
+    @Cascade(org.hibernate.annotations.CascadeType.ALL)
+    private List<Order> orders;
 
     @Override
     public String toString() {

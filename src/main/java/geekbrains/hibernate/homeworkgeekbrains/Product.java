@@ -1,6 +1,7 @@
-package geekbrains.hibernate.homework;
+package geekbrains.hibernate.homeworkgeekbrains;
 
 import lombok.*;
+import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
 import java.util.List;
@@ -23,8 +24,10 @@ public class Product {
     @Column(name = "price")
     private Double price;
 
-    @ManyToMany(mappedBy = "persons")
-    private List<Person> personList;
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "products")
+    @Cascade(org.hibernate.annotations.CascadeType.ALL)
+    private List<Order> orders;
+
 
     @Override
     public String toString() {
