@@ -1,10 +1,17 @@
 package geekbrains.hibernate.lesson;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
 @Table(name = "readers")
+@Getter
+@Setter
+@NoArgsConstructor
 public class Reader {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,33 +28,6 @@ public class Reader {
             inverseJoinColumns = @JoinColumn(name = "book_id")
     )
     private List<Book> books;
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public List<Book> getBooks() {
-        return books;
-    }
-
-    public void setBooks(List<Book> books) {
-        this.books = books;
-    }
-
-    public Reader() {
-    }
 
     @Override
     public String toString() {

@@ -1,7 +1,8 @@
 package algorithms.tree;
 
-import datastructures.myqueue.MyQueue;
-import datastructures.mystack.MyStack;
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Stack;
 
 public class TreeTest {
     public static void main(String[] args) {
@@ -14,44 +15,51 @@ public class TreeTest {
         tree.insertNode(4);
         tree.insertNode(7);
 
-        deepSearch(tree.getRoot());
-        System.out.println("Test deep ok");
-        widthSearch(tree.getRoot());
-        System.out.println("Test width OK");
+
     }
 
-    public static Node widthSearch(Node root) {
-        MyQueue<Node> myQueue = new MyQueue<>();
-        if (root != null) {
-            Node currNode = myQueue.remove();
+    private static void traverseDeep(Tree tree) {
+        Stack<Node> stack = new Stack<>();
+        Node currNode = tree.getRoot();
+        stack.push(currNode);
+        while (!stack.isEmpty()) {
+            currNode = stack.pop();
             if (currNode != null) {
                 if (currNode.getRightChild() != null) {
-                    myQueue.add(currNode.getRightChild());
+                    stack.push(currNode.getRightChild());
                 }
                 if (currNode.getLeftChild() != null) {
-                    myQueue.add(currNode.getLeftChild());
+                    stack.push(currNode.getLeftChild());
                 }
             }
         }
-        return myQueue.remove();
     }
 
-    public static Node deepSearch(Node root) {
-        MyStack<Node> myStack = new MyStack<>();
-        if (root != null) {
-            myStack.push(root);
-            while (!myStack.isEmpty()) {
-                Node currNode = myStack.pop();
-                if (currNode != null) {
-                    if (currNode.getRightChild() != null) {
-                        myStack.push(currNode.getRightChild());
-                    }
-                    if (currNode.getLeftChild() != null) {
-                        myStack.push(currNode.getLeftChild());
-                    }
+    private static void traverseWide(Tree tree) {
+        Queue<Node> queue = new LinkedList<>();
+        Node currNode = tree.getRoot();
+        queue.add(currNode);
+        while (!queue.isEmpty()) {
+            currNode = queue.remove();
+            if (currNode != null) {
+                if (currNode.getRightChild() != null) {
+                    queue.add(currNode.getRightChild());
+                }
+                if (currNode.getLeftChild() != null) {
+                    queue.add(currNode.getLeftChild());
                 }
             }
         }
-        return myStack.pop();
+    }
+
+    private static void testRec(Node root) {
+        if (root != null) {
+            if (root.getLeftChild() != null) {
+                testRec(root.getLeftChild());
+            }
+            if (root.getRightChild() != null) {
+                testRec(root.getRightChild());
+            }
+        }
     }
 }
