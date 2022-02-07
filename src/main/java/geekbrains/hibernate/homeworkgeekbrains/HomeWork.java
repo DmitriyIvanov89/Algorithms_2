@@ -35,7 +35,7 @@ public class HomeWork {
                         session = factory.getCurrentSession();
                         session.beginTransaction();
 
-                        
+
 
                         session.getTransaction().commit();
                         System.out.print("Enter new command: ");
