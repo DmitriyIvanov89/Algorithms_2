@@ -1,12 +1,14 @@
-package geekbrains.hibernate.homeworkgeekbrains;
+package geekbrains.hibernate.skillbox;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name = "persons")
 @Data
+@NoArgsConstructor
 public class Person {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -15,6 +17,10 @@ public class Person {
 
     @Column(name = "name")
     private String name;
+
+    public Person(String name) {
+        this.name = name;
+    }
 
     @Override
     public String toString() {
