@@ -1,10 +1,8 @@
-package geekbrains.hibernate.skillbox;
+package geekbrains.hibernate.geekbrains;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
-
-import java.util.List;
 
 public class SkillBoxMain {
     public static void main(String[] args) {

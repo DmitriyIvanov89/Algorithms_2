@@ -1,4 +1,4 @@
-package geekbrains.hibernate.skillbox;
+package geekbrains.hibernate.geekbrains;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
