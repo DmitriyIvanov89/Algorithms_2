@@ -2,8 +2,10 @@ package geekbrains.hibernate.skillbox;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "products")
@@ -26,8 +28,12 @@ public class Product {
         this.price = price;
     }
 
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "person")
+    @Cascade(org.hibernate.annotations.CascadeType.ALL)
+    private List<Order> orders;
+
     @Override
     public String toString() {
-        return String.format("Product: [id: %d,name: %s,price: %f", id, name, price);
+        return String.format("Product: {id: %d,name: %s,price: %f}", id, name, price);
     }
 }

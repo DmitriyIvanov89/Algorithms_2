@@ -41,6 +41,8 @@ public class SkillBoxMain {
 //            session.delete(person);
 //            session.getTransaction().commit();
 
+            
+
         } finally {
             session.close();
             sessionFactory.close();
