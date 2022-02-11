@@ -21,7 +21,7 @@ public class SkillBoxMain {
 
         try {
 
-            // create new Order
+//            create new Order
 //            session = sessionFactory.getCurrentSession();
 //            session.beginTransaction();
 //            Person person = (Person) session.createQuery("FROM Person p WHERE p.id = :id").setParameter("id", 1L).uniqueResult();
@@ -38,7 +38,8 @@ public class SkillBoxMain {
 //            session.getTransaction().commit();
 //
 //            System.out.println("Create new order: " + order.toString());
-            // ShowProductsByPerson
+
+//            ShowProductsByPerson
 //            session = sessionFactory.getCurrentSession();
 //            session.beginTransaction();
 //            Person person = (Person) session.createQuery("FROM Person p WHERE p.id = :id").setParameter("id", 1L).uniqueResult();
@@ -46,8 +47,23 @@ public class SkillBoxMain {
 //            for (Order order : orders) {
 //                System.out.println(order);
 //            }
+//            session.getTransaction().commit();
 
+//            ShowPersonsByProduct
+//            session = sessionFactory.getCurrentSession();
+//            session.beginTransaction();
+//            Product product = (Product) session.createQuery("FROM Product p WHERE p.id = :id").setParameter("id", 5L).uniqueResult();
+//            List<Order> orders = product.getOrders();
+//            orders.forEach(o -> System.out.println("Persons for : " + product.getName() + ": " + o.getPerson().toString()));
+//            session.getTransaction().commit();
 
+//            removePerson(removeProduct)
+//            session = sessionFactory.getCurrentSession();
+//            session.beginTransaction();
+//            Person person = (Person) session.createQuery("FROM Person p WHERE p.id = :id").setParameter("id", 5L).uniqueResult();
+//            session.remove(person);
+//            session.getTransaction().commit();
+//            System.out.println("Deleted person : " + person.toString());
 
         } finally {
             session.close();
