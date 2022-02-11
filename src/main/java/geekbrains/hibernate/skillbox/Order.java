@@ -15,15 +15,18 @@ public class Order {
     private OrderId orderId;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "person_id")
-    private int personId;
+    @JoinColumn(name = "person_id", insertable = false, updatable = false)
+    private Person person;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "product_id")
-    private int productId;
+    @JoinColumn(name = "product_id", insertable = false, updatable = false)
+    private Product product;
+
+    @Column(name = "price")
+    private Double price;
 
     @Override
     public String toString() {
-        return String.format("Order: {id: %s,person_id: %d,product_id: %d}", orderId, personId, productId);
+        return String.format("Order: {id: %s,person_id: %d,product_id: %d,price: %f}", orderId, orderId.getPersonId(), orderId.getProductId(), price);
     }
 }

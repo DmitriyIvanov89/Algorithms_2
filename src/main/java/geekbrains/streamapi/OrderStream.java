@@ -1,11 +1,11 @@
 package geekbrains.streamapi;
 
-public class Order {
+public class OrderStream {
 
     private int id;
     private String context;
 
-    public Order(int id, String context) {
+    public OrderStream(int id, String context) {
         this.id = id;
         this.context = context;
     }

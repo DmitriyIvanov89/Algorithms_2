@@ -15,7 +15,7 @@ public class Person {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private int id;
+    private Long id;
 
     @Column(name = "name")
     private String name;
@@ -24,7 +24,7 @@ public class Person {
         this.name = name;
     }
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "persons")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "person")
     @Cascade(org.hibernate.annotations.CascadeType.ALL)
     private List<Order> orders;
 
