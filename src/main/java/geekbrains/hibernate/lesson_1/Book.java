@@ -1,4 +1,4 @@
-package geekbrains.hibernate.lesson;
+package geekbrains.hibernate.lesson_1;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
