@@ -10,8 +10,10 @@
         <property name="connection.password">admin</property>
         <property name="connection.pool_size">1</property>
         <property name="dialect">org.hibernate.dialect.PostgreSQL94Dialect</property>
-        <property name="show_sql">true</property>
+        <property name="show_sql">false</property>
         <property name="current_session_context_class">thread</property>
         <property name="hibernate.hbm2ddl.auto">none</property>
+        <mapping class="geekbrains.hibernate.geekbrains.Person"/>
+        <mapping class="geekbrains.hibernate.geekbrains.Product"/>
     </session-factory>
 </hibernate-configuration>
